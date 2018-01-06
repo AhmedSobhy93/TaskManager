@@ -39,13 +39,7 @@
                       
                 
             </div>
-         <% }else{
-        	 %>
-            <div class="panel-heading" align="center">
-                <h4><b><font color="black" style="">Welcome <font color="Blue" style=""> </font>  To Task Manager </font> </b></h4>
-                
-            </div>
-         <%} %>
+        
          
          
          
@@ -83,7 +77,6 @@
 	            
 	            
 	             <% if (session.getAttribute("currentSessionUser") != null){ %>
-					 <% UserBean currentUser = ((UserBean) (session.getAttribute("currentSessionUser")));%> 
 		        
 		           <input type="hidden" name="owner" value="<%= currentUser.getUsername() %>"/>
 		         <% }else{
@@ -117,6 +110,34 @@
                 </div>
                 
             </div>
+                  <% }else{
+        	 %>
+            <div class="panel-heading" align="center">
+                <h4><b><font color="black" style="">Welcome <font color="Blue" style=""> </font>  To Task Manager </font> </b></h4>
+                
+            </div>
+            
+             <div class="panel-body"align="center">
+                  
+                <div class="container " style="margin-top: 10%; margin-bottom: 10%;">
+    
+                    <div class="panel panel-success" style="max-width: 100%;" align="left">
+                        
+                        <div class="panel-heading form-group">
+                            <h2><b><font color="white">
+                                Please contact with Administrator to register or login if you've credentials  </font> </b></h2>
+                                
+	    					<a href="/TaskManagerIST" class="btn btn-primary a-btn-slide-text">
+									       <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+									        <span><strong>Login</strong></span>            
+									    </a>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+                       
+                       
+         <%} %>
             <div class="panel-footer" align="center"><font style="color: #111">Copyright @2017  <a href="http://istnetworks.com/">IST-RJB Devs</a>, All Rights Reserved. </font></div>
         </div>
     </div>

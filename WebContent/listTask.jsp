@@ -29,13 +29,7 @@
                       
                 
             </div>
-         <% }else{
-        	 %>
-            <div class="panel-heading" align="center">
-                <h4><b><font color="black" style="">Welcome <font color="Blue" style=""> </font>  To Task Manager </font> </b></h4>
-                
-            </div>
-         <%} %>
+         
             <div class="panel-body"align="center">
                   
                 <div class="container " style="margin-top: 10%; margin-bottom: 10%;">
@@ -75,13 +69,13 @@
 								 	<td>${task.comment}</td>
 								 	<td>${task.dateInserted}</td>
 								 	<td>
-									 	<a href="TaskController?action=edit&taskID=${task.taskID}" class="btn btn-primary a-btn-slide-text">
+									 	<a href="TaskController?action=edit&taskID=${task.taskID}" class="btn btn-warning a-btn-slide-text">
 									        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 									        <span><strong>Edit</strong></span>            
 									    </a>
 								    </td>
 								 	<td>
-									 	<a href="TaskController?action=delete&taskID=${task.taskID}" class="btn btn-primary a-btn-slide-text">
+									 	<a href="TaskController?action=delete&taskID=${task.taskID}" class="btn btn-danger a-btn-slide-text">
 									       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 									        <span><strong>Delete</strong></span>            
 									    </a>
@@ -166,6 +160,35 @@ System.out.println("action"+request.getParameter("action"));
                 </div>
                 
             </div>
+            
+            <% }else{
+        	 %>
+            <div class="panel-heading" align="center">
+                <h4><b><font color="black" style="">Welcome <font color="Blue" style=""> </font>  To Task Manager </font> </b></h4>
+                
+            </div>
+            
+             <div class="panel-body"align="center">
+                  
+                <div class="container " style="margin-top: 10%; margin-bottom: 10%;">
+    
+                    <div class="panel panel-success" style="max-width: 100%;" align="left">
+                        
+                        <div class="panel-heading form-group">
+                            <h2><b><font color="white">
+                                Pleace contact with Administrator to register or login if you've credentials  </font> </b></h2>
+                                
+	    					<a href="/TaskManagerIST" class="btn btn-primary a-btn-slide-text">
+									       <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+									        <span><strong>Login</strong></span>            
+									    </a>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+                       
+                       
+         <%} %>
             <div class="panel-footer" align="center"><font style="color: #111">Copyright @2017  <a href="http://istnetworks.com/">IST-RJB Devs</a>, All Rights Reserved. </font></div>
         </div>
     </div>
