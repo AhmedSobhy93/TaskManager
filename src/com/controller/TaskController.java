@@ -40,19 +40,32 @@ public class TaskController extends HttpServlet{
 				action = request.getParameter("action");
 
 	        if (action.equalsIgnoreCase("delete")){
-	            int taskID = Integer.parseInt(request.getParameter("taskID"));
-	            dao.deleteTask(taskID);
-
-		        try {
-					response.sendRedirect("/TaskManagerIST/TaskController?action=listTask");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		        return;
-//	            forward = LIST_TASK;
-//	            request.setAttribute("tasks", dao.getAllTasks((page-1)*recordsPerPage,
-//                        recordsPerPage));    
+	        	
+	        	
+	        	UserBean currentUser = ((UserBean) (request.getSession().getAttribute("currentSessionUser")));
+	        	if(currentUser==null){
+	        		try {
+						response.sendRedirect("/TaskManagerIST/");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	        		 return;
+	        	}else{
+		            int taskID = Integer.parseInt(request.getParameter("taskID"));
+		            dao.deleteTask(taskID);
+		            	
+			        try {
+						response.sendRedirect("/TaskManagerIST/TaskController?action=listTask");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			        return;
+	//	            forward = LIST_TASK;
+	//	            request.setAttribute("tasks", dao.getAllTasks((page-1)*recordsPerPage,
+	//                        recordsPerPage));    
+	        	}
 	        } else if (action.equalsIgnoreCase("edit")){
 	            forward = INSERT_OR_EDIT;
 	            int taskID = Integer.parseInt(request.getParameter("taskID"));

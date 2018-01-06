@@ -68,18 +68,33 @@
 								 	<td>${task.owner}</td>
 								 	<td>${task.comment}</td>
 								 	<td>${task.dateInserted}</td>
-								 	<td>
-									 	<a href="TaskController?action=edit&taskID=${task.taskID}" class="btn btn-warning a-btn-slide-text">
-									        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-									        <span><strong>Edit</strong></span>            
-									    </a>
-								    </td>
-								 	<td>
-									 	<a href="TaskController?action=delete&taskID=${task.taskID}" class="btn btn-danger a-btn-slide-text">
-									       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									        <span><strong>Delete</strong></span>            
-									    </a>
-								    </td>
+
+								<c:choose>
+								    <c:when test="${task.owner.equals(sessionScope.currentSessionUser.username)}">
+								       <td>
+											 	<a href="TaskController?action=edit&taskID=${task.taskID}" class="btn btn-warning a-btn-slide-text">
+											        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+											        <span><strong>Edit</strong></span>            
+											    </a>
+										    </td>
+										 	<td>
+											 	<a href="TaskController?action=delete&taskID=${task.taskID}" class="btn btn-danger a-btn-slide-text">
+											       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+											        <span><strong>Delete</strong></span>            
+											    </a>
+										    </td>
+								    </c:when>
+								    
+								    <c:otherwise>
+								        <td></td>
+								        <td></td>
+								    </c:otherwise>
+								</c:choose>
+
+
+
+								 	
+								    
 								  </tr>
 							 </c:forEach>
 			    </table>

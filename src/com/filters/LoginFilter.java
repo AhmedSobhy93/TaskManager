@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("")
+@WebFilter("/RequestLoggingFilter")
 public class LoginFilter implements Filter{
 	
 
@@ -28,19 +28,17 @@ public class LoginFilter implements Filter{
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-        String loginURI = request.getContextPath() + "/";
+        String loginURI = request.getContextPath() + "/TaskManagerIST/";
 
        
         boolean loggedIn = session != null && session.getAttribute("currentSessionUser") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
 
         if(!loggedIn && !loginRequest ){
-        	response.sendRedirect("index.jsp");
-        	System.out.println("hhhhhhhhhhhhhhhh");
+        	response.sendRedirect("/TaskManagerIST/");
         	
         }else {
             chain.doFilter(request, response);
-            System.out.println("zzzzzzzzzzzzzz");
         }
     }
 
