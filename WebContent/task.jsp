@@ -78,7 +78,7 @@
 	            
 	             <% if (session.getAttribute("currentSessionUser") != null){ %>
 		        
-		           <input type="hidden" name="owner" value="<%= currentUser.getUsername() %>"/>
+		           <input type="hidden" name="owner" value="<%= currentUser.getFirstName()+" "+currentUser.getLastName() %>"/>
 		         <% }else{
 		        	 %>
 		         

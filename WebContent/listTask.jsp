@@ -70,7 +70,7 @@
 								 	<td>${task.dateInserted}</td>
 
 								<c:choose>
-								    <c:when test="${task.owner.equals(sessionScope.currentSessionUser.username)}">
+								    <c:when test="${task.owner.equals(sessionScope.currentSessionUser.firstName.concat(' ').concat(sessionScope.currentSessionUser.lastName))}">
 								       <td>
 											 	<a href="TaskController?action=edit&taskID=${task.taskID}" class="btn btn-warning a-btn-slide-text">
 											        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
