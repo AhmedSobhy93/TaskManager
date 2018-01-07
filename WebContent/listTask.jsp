@@ -35,19 +35,39 @@
                 <div class="container " style="margin-top: 10%; margin-bottom: 10%;">
     
                     <div class="panel panel-success" style="max-width: 100%;" align="left">
-                        
                         <div class="panel-heading form-group">
                             <h2><b><font color="white">
                                 All Available Tasks</font> </b></h2>
-                                
+                                <br>
 	    					<form action="TaskController" method="get">
-			                	<input type="text" name="searchKey" placeholder="Enter Project Name"/>
-			                	<input type="hidden" value="search" name="action"/>
-			                	<input type="submit" value="Search"/>
+	    					<!--  
+	    						<div class="col-md-4" >
+			                	<input type="search" name="searchKey" placeholder="Enter Project Name"  class="form-control"/>
+			                	
+			                	</div>
+			                	
+								<div class="col-md-4" >
+								  <button type="submit"  class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+										<span><strong>Search</strong></span></button>
+								  
+								</div>
+								-->
+							<input type="hidden" value="search" name="action"/>
+								
+							 
+							  <div class="input-group">
+							   <div class="input-group-addon">
+								<span class="glyphicon glyphicon-search"></span> 
+							   </div>
+			                	<input type="search" name="searchKey" placeholder="Enter Project Name"  class="form-control"/>
+							  </div>
+							 
+ 
+								
 			                </form>
                        </div>
                         
-	               
+	               <br>
          <div class="panel-body" >
 
 			    <table border="1" cellpadding="5" cellspacing="5" class="table table-striped">

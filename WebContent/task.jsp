@@ -92,13 +92,17 @@
 	  			<%
 				    if (request.getParameter("action").equals("edit")) {
 				    	%>
-				    	<input type="submit" value="Edit Task" font-size:1.1em;" class="btn btn-small btn btn-success  btn-block"/>
-				    	
+				    	<!--  <input type="submit" value="Edit Task" font-size:1.1em;" class="btn btn-small btn btn-warning  btn-block"/>-->
+				    	 <button type="submit"  class="form-control btn btn-warning a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+										<span><strong>Edit Task</strong></span></button>
+							
 				    	<% 
 				    } else {
 						%>
-			             	   		<input type="submit" value="Add Task" font-size:1.1em;" class="btn btn-small btn btn-primary  btn-block"Ù>   	
-						    
+			             	<!--  <input type="submit" value="Add Task" font-size:1.1em;" class="btn btn-small btn btn-primary  btn-block"> -->  	
+						    <button type="submit"  class="form-control btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+										<span><strong>Add Task</strong></span></button>
+								  
 				    	<% 
 				    }
 				%>
