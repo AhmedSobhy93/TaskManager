@@ -13,5 +13,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="E:/J2EE Tutorials/some-jdbc-drivers/some-jdbc-drivers/jtds-1.3.1.jar"/>
+	<classpathentry kind="lib" path="E:/J2EE Tutorials/some-jdbc-drivers/some-jdbc-drivers/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="E:/J2EE Tutorials/some-jdbc-drivers/some-jdbc-drivers/sqljdbc4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

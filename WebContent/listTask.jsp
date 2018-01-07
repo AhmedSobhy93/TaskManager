@@ -13,7 +13,7 @@
 <title>Tasks List</title>
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/css/css.css" rel="stylesheet">
-
+<link rel="shortcut icon" href="assets/images/solution-grey.png">
 </head>
 <body>
 

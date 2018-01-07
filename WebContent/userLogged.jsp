@@ -15,7 +15,7 @@
             content="text/html; charset=windows-1256">
          <title>   User Logged Successfully   </title>
          <link href="css/bootstrap.min.css" rel="stylesheet">
-         
+         <link rel="shortcut icon" href="assets/images/solution-grey.png">
       </head>
 	
       <body>

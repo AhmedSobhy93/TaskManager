@@ -13,6 +13,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="shortcut icon" href="assets/images/solution-grey.png">
  <%
 				    if (request.getParameter("action").equals("edit")) {
 				    	%>

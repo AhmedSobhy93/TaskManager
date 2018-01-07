@@ -11,6 +11,7 @@
          <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
 		<title>Login Page</title>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="assets/images/solution-grey.png">
          
 	</head>
 
