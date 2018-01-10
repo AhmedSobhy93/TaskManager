@@ -3,7 +3,7 @@
 <%@ page language="java" 
          contentType="text/html; charset=windows-1256"
          pageEncoding="windows-1256"
-         import="com.beans.UserBean"
+         import="com.beans.AdminBean"
          
    %>
 
@@ -17,11 +17,11 @@
  <%
 				    if (request.getParameter("action").equals("edit")) {
 				    	%>
-						<title>Edit Task</title>				    	
+						<title>Edit User</title>				    	
 				    	<% 
 				    } else {
 						%>
-						<title>Add New Task</title>				    	
+						<title>Add New User</title>				    	
 						<% 
 				    }
 				%>
@@ -32,16 +32,14 @@
 	  
 <div class="container-fluid">
         <div class="panel panel-success">
-            <% if (session.getAttribute("currentSessionUser") != null){ %>
-			 <% UserBean currentUser = ((UserBean) (session.getAttribute("currentSessionUser")));%> 
+            <% if (session.getAttribute("admin") != null){ %>
+			 <% AdminBean admin = ((AdminBean) (session.getAttribute("admin")));%> 
         
              <div class="panel-heading" align="center">
-                <h4><b><font color="black" style=""> <a href='TaskController?action=""' style="float:left">Add New Task</a>Welcome <font color="Blue" style=""><%= currentUser.getFirstName() + " " + currentUser.getLastName() %> </font>  To Task Manager </font> 
-                 <a href="logout.jsp" style="float:right" class="btn btn-danger a-btn-slide-text">
+                <h4><b><font color="black" style="">Welcome <font color="Blue" style=""><%= admin.getUsername() %> </font>  To Task Manager </font> <a href="Admin?action=logout" style="float:right" class="btn btn-danger a-btn-slide-text">
 											       <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 											        <span><strong>Logout</strong></span>            
-						</a>
-                </b></h4>
+						</a></b></h4>
                       
                 
             </div>
@@ -51,76 +49,46 @@
          
             <div class="panel-body"align="center">
                   
-                <div class="container " style="margin-top: 10%; margin-bottom: 10%;">
+                <div class="container " style="margin-top: 5%; margin-bottom: 10%;">
     
-                    <div class="panel panel-success" style="max-width: 35%;" align="left">
+                    <div class="panel panel-success" style="max-width: 60%;" align="left">
                         
                         <div class="panel-heading form-group">
-                            
-                    <%
-				    if (request.getParameter("action").equals("edit")) {
-				    	%>
-						<b><font color="white">
-                                Edit Task</font> </b>				    	
-				    	<% 
-				    } else {
-						%>
-						<b><font color="white">
-                                Add Task</font> </b>			    	
-						<% 
-				    }
-					%>
+                            <b><font color="white">
+                                Add User</font> </b>
                         </div>
                     
                         <div class="panel-body" >
-			 <form action="TaskController?action=listTask" method="post">
+			 <form action="User" method="post">
 			        <fieldset>
-     
+                   
 	           
-	                <label for="projectName">Project Name</label>
-	                
-	                    <select name="projectName"  class="form-control">
-	                    	<c:forEach items="${projects}" var="project">
-	                    
-				          	  <option value="${project.projectName}">${project.projectName}</option>
-				            
-				        	</c:forEach>
-				        
-				        </select>
+	            <label for="firstName">First Name</label> <input type="text"
+	                    name="firstName" placeholder="First Name" class="form-control"  value="<c:out value="${user.firstName}"/>" />
+	            <label for="lastName">Last Name</label> <input type="text"
+	                    name="lastName" placeholder="Last Name" class="form-control"  value="<c:out value="${user.lastName}"/>" />
+	            <label for="username">User Name</label> <input type="text"
+	                    name="username" placeholder="User Name" class="form-control"  value="<c:out value="${user.username}"/>" />
+	            <label for="password">Password</label> <input type="text"
+	                    name="password" placeholder="Password" class="form-control"  value="<c:out value="${user.password}"/>" />
 	           
-	                <label for="title">Title</label> <input type="text"
-	                    name="title" value="<c:out value="${task.title}" />"
-	                    placeholder="Task Title" class="form-control" />
-	           
-	                <label for="comment">Comment</label> 
-	                    <textarea name="comment" placeholder="Please add Complete Info About your task,IP's,Passwords,Notes and any thing that will help others." class="form-control" rows="5">${task.comment}</textarea>
 	            
-	            
-	             <% if (session.getAttribute("currentSessionUser") != null){ %>
-		        
-		           <input type="hidden" name="owner" value="<%= currentUser.getFirstName()+" "+currentUser.getLastName() %>"/>
-		         <% }else{
-		        	 %>
-		         
-		         <%} %>
-	            
-	  				  		 	
 	  		 	<input type="hidden" name="action1" value="<%= request.getParameter("action") %>"/>
-	  			<input type="hidden" name="taskID" value="<%= request.getParameter("taskID") %>"/>
+	  			<input type="hidden" name="userID" value="<%= request.getParameter("userId") %>"/>
 	  			<hr>
 	  			<%
 				    if (request.getParameter("action").equals("edit")) {
 				    	%>
 				    	<!--  <input type="submit" value="Edit Task" font-size:1.1em;" class="btn btn-small btn btn-warning  btn-block"/>-->
 				    	 <button type="submit"  class="form-control btn btn-warning a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-										<span><strong>Edit Task</strong></span></button>
+										<span><strong>Edit User</strong></span></button>
 							
 				    	<% 
 				    } else {
 						%>
 			             	<!--  <input type="submit" value="Add Task" font-size:1.1em;" class="btn btn-small btn btn-primary  btn-block"> -->  	
 						    <button type="submit"  class="form-control btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-										<span><strong>Add Task</strong></span></button>
+										<span><strong>Add User</strong></span></button>
 								  
 				    	<% 
 				    }
@@ -149,9 +117,9 @@
                         
                         <div class="panel-heading form-group">
                             <h2><b><font color="white">
-                                Please contact with Administrator to register or login if you've credentials  </font> </b></h2>
+                                Please login Again  </font> </b></h2>
                                 
-	    					<a href="/TaskManagerIST" class="btn btn-primary a-btn-slide-text">
+	    					<a href="/TaskManagerIST/Admin" class="btn btn-primary a-btn-slide-text">
 									       <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
 									        <span><strong>Login</strong></span>            
 									    </a>

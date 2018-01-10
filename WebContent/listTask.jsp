@@ -25,7 +25,11 @@
 			 <% UserBean currentUser = ((UserBean) (session.getAttribute("currentSessionUser")));%> 
         
              <div class="panel-heading" align="center">
-                <h4><b><font color="black" style=""> <a href="TaskController?action='add'" style="float:left">Add New Task</a>Welcome <font color="Blue" style=""><%= currentUser.getFirstName() + " " + currentUser.getLastName() %> </font>  To Task Manager </font> <a href='logout.jsp'  style="float:right">Log out</a></b></h4>
+                <h4><b><font color="black" style=""> <a href="TaskController?action='add'" style="float:left">Add New Task</a>Welcome <font color="Blue" style=""><%= currentUser.getFirstName() + " " + currentUser.getLastName() %> </font>  To Task Manager </font>
+                  <a href="logout.jsp" style="float:right" class="btn btn-danger a-btn-slide-text">
+											       <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+											        <span><strong>Logout</strong></span>            
+						</a></b></h4>
                       
                 
             </div>

@@ -5,13 +5,17 @@ import java.text.*;
 import java.util.*;
 import java.sql.*;
 import com.db.*;
+
+import sun.util.resources.CurrencyNames;
    
 public class UserDAO 	
    {
       static Connection currentCon = null;
       static ResultSet rs = null;  
 	
-	
+      public UserDAO(){
+    	  currentCon = ConnectionManager.getConnection();
+      }
 	
       public static UserBean login(UserBean bean) {
 	
@@ -97,4 +101,121 @@ public class UserDAO
 return bean;
 	
       }	
+   
+      public void addUser(UserBean user){
+    	    	  
+    	  try {
+    		  String query="insert into users (FirstName,LastName,username,password) values(?,?,?,?)";
+        	  PreparedStatement preparedStatement=currentCon.prepareStatement(query);
+        	  preparedStatement.setString(1, user.getFirstName());
+        	  preparedStatement.setString(2, user.getLastName());
+        	  preparedStatement.setString(3, user.getUsername());
+        	  preparedStatement.setString(4, user.getPassword());
+        	  
+        	  preparedStatement.executeUpdate();
+	    	  preparedStatement.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	     	  
+      }
+      
+      public void deleteUser(int id){
+    	  String query="delete from users where user_id=?";
+    	  try {
+			PreparedStatement preparedStatement=currentCon.prepareStatement(query);
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 	  
+      }
+      
+      public void updateUser(UserBean user){
+    	  String query="update users set FirstName=?,LastName=?,username=?,password=? where user_id=?";
+    	  
+    	  PreparedStatement preparedStatement;
+		try {
+			  preparedStatement = currentCon.prepareStatement(query);
+			  preparedStatement.setString(1, user.getFirstName());
+	    	  preparedStatement.setString(2, user.getLastName());
+	    	  preparedStatement.setString(3, user.getUsername());
+	    	  preparedStatement.setString(4, user.getPassword());
+	    	  preparedStatement.setInt(5, user.getUserId());
+	    	  
+	    	  preparedStatement.executeUpdate();
+	    	  preparedStatement.close();
+	    	  
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	  
+      }
+      
+      public UserBean getUserById(int id){
+    	  UserBean user=new UserBean();
+    	  
+    	  String query="select * from users where user_id=?";
+    	  try {
+			PreparedStatement preparedStatement=currentCon.prepareStatement(query);
+			preparedStatement.setInt(1, id);
+			ResultSet result=preparedStatement.executeQuery();
+			while(result.next()){
+				user.setFirstName(result.getString("FirstName"));
+				user.setLastName(result.getString("LastName"));
+				user.setUserName(result.getString("username"));
+				user.setPassword(result.getString("password"));
+				
+			}
+			
+			result.close();
+			preparedStatement.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	  
+    	  return user;
+    	  
+      }
+      
+      public List<UserBean> getAllUsers(){
+    	  List<UserBean> users=new ArrayList<UserBean>();
+    	  UserBean user=null;
+    	  
+    	  String query="select * from users";
+    	  try {
+			PreparedStatement preparedStatement=currentCon.prepareStatement(query);
+			ResultSet result=preparedStatement.executeQuery();
+			
+			while(result.next()){
+				user=new UserBean();
+				user.setFirstName(result.getString("FirstName"));
+				user.setLastName(result.getString("LastName"));
+				user.setUserName(result.getString("username"));
+				user.setPassword(result.getString("password"));
+				user.setUserId(result.getInt("user_id"));
+				users.add(user);
+			}
+			
+			result.close();
+			preparedStatement.close();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	  
+    	  
+    	  
+    	  return users;
+    	  
+      }
+   
    }

@@ -3,6 +3,7 @@ package com.beans;
 
 public class UserBean {
 	
+	  private int userId;
       private String username;
       private String password;
       private String firstName;
@@ -52,5 +53,13 @@ public class UserBean {
 
       public void setValid(boolean newValid) {
          valid = newValid;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}	
 }
