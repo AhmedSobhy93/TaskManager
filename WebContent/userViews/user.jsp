@@ -36,10 +36,11 @@
 			 <% AdminBean admin = ((AdminBean) (session.getAttribute("admin")));%> 
         
              <div class="panel-heading" align="center">
-                <h4><b><font color="black" style="">Welcome <font color="Blue" style=""><%= admin.getUsername() %> </font>  To Task Manager </font> <a href="Admin?action=logout" style="float:right" class="btn btn-danger a-btn-slide-text">
-											       <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-											        <span><strong>Logout</strong></span>            
-						</a></b></h4>
+                <h4><b><font color="black" style="">Welcome <font color="Blue" style=""><%= admin.getUsername() %> </font>  To Task Manager </font> <a
+						href="Admin?action=logout" style="float: right"
+						class="btn btn-danger a-btn-slide-text"> <span
+							class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <span><strong>Logout</strong></span>
+					</a></b></h4>
                       
                 
             </div>

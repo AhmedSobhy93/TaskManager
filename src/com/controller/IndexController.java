@@ -22,11 +22,11 @@ public class IndexController extends HttpServlet{
 		    projects=adminDao.getAllProjects();
 		    this.getServletContext().setAttribute("projects", projects);
 		    
-		    ArrayList<UserBean> users=new ArrayList<UserBean>();
-		    UserDAO userDao=new UserDAO();
-		    
-		    users=(ArrayList<UserBean>) userDao.getAllUsers();
-		    this.getServletContext().setAttribute("users", users);
+			ArrayList<UserBean> users = new ArrayList<UserBean>();
+			UserDAO userDao = new UserDAO();
+	
+			users = (ArrayList<UserBean>) userDao.getAllUsers();
+			this.getServletContext().setAttribute("users", users);
 		    
 		  }
 	

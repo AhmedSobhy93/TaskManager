@@ -13,6 +13,8 @@
          <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
 		<title>Admin Panel</title>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/css/css.css" rel="stylesheet">
+		
         <link rel="shortcut icon" href="assets/images/solution-grey.png">
          
 	</head>
@@ -29,15 +31,16 @@
         
              <div class="panel-heading" align="center">
                 <h4><b><font color="black" style="">Welcome <font color="Blue" style=""><%= admin.getUsername() %> </font>  To Task Manager </font>
-                              	  				
-                <a href="Admin?action=logout" style="float:right" class="btn btn-danger a-btn-slide-text">
-											       <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-											        <span><strong>Logout</strong></span>            
-						</a>
-                 </b></h4>
+
+						<a href="Admin?action=logout" style="float: right"
+						class="btn btn-danger a-btn-slide-text"> <span
+							class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <span><strong>Logout</strong></span>
+					</a> </b></h4>
                 
             </div>
-         <% }else{ %>
+         <%
+         	} else {
+         %>
             <div class="panel-heading" align="center">
                 <h4><b><font color="black" style="">Welcome <font color="Blue" style=""> </font>  To Task Manager </font> </b></h4>
                 

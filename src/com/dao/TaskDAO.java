@@ -25,7 +25,7 @@ public class TaskDAO {
               String query = "insert into task (projectName, owner, title, comment) values (?,?,?,?)";
               PreparedStatement preparedStatement = conn.prepareStatement( query );
               preparedStatement.setString( 1, task.getProjectName() );
-              preparedStatement.setString( 2, task.getOwner() );
+              preparedStatement.setInt( 2, task.getOwner() );
               preparedStatement.setString( 3, task.getTitle() );
               preparedStatement.setString( 4, task.getComment() );
               preparedStatement.executeUpdate();
@@ -54,7 +54,7 @@ public class TaskDAO {
   	            String query = "update task set projectName=?, owner=?, title=?, comment=? where taskID=?";
   	            PreparedStatement preparedStatement = conn.prepareStatement( query );
   	            preparedStatement.setString( 1, task.getProjectName() );
-  	            preparedStatement.setString( 2, task.getOwner() );
+  	            preparedStatement.setInt( 2, task.getOwner() );
   	            preparedStatement.setString( 3, task.getTitle() );
   	            preparedStatement.setString( 4, task.getComment() );
   	            preparedStatement.setInt(5, task.getTaskID());
@@ -79,7 +79,7 @@ public class TaskDAO {
 //                  System.out.print("Dao >>"+task.getTaskID());
                   task.setProjectName( resultSet.getString( "projectName" ) );
 //                  System.out.print("Dao >>"+task.getProjectName());
-                  task.setOwner( resultSet.getString( "owner" ) );
+                  task.setOwner( resultSet.getInt( "owner" ) );
                   task.setTitle( resultSet.getString( "title" ) );
                   task.setComment( resultSet.getString( "comment" ) );
                   task.setDateInserted(resultSet.getString("DateInserted"));
@@ -107,11 +107,11 @@ public class TaskDAO {
               String query = "select * from task where taskID=?";
               PreparedStatement preparedStatement = conn.prepareStatement( query );
               preparedStatement.setInt(1, taskID);
-              ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSet = preparedStatement.executeQuery();
               while( resultSet.next() ) {
               	task.setTaskID( resultSet.getInt( "taskID" ) );
                   task.setProjectName( resultSet.getString( "projectName" ) );
-                  task.setOwner( resultSet.getString( "owner" ) );
+                  task.setOwner( resultSet.getInt( "owner" ) );
                   task.setTitle( resultSet.getString( "title" ) );
                   task.setComment( resultSet.getString( "comment" ) );
                   System.out.println("task.getComment"+task.getComment());
@@ -139,7 +139,7 @@ public class TaskDAO {
 //                System.out.println(task.getTaskID());
                 task.setProjectName( resultSet.getString( "projectName" ) );
 //                System.out.println(task.getProjectName());
-                task.setOwner( resultSet.getString( "owner" ) );
+                task.setOwner( resultSet.getInt( "owner" ) );
                 task.setTitle( resultSet.getString( "title" ) );
                 task.setComment( resultSet.getString( "comment" ) );
                 task.setDateInserted(resultSet.getString("DateInserted"));

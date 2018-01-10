@@ -13,6 +13,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+ <link href="assets/css/css.css" rel="stylesheet">
+ 
  <link rel="shortcut icon" href="assets/images/solution-grey.png">
  <%
 				    if (request.getParameter("action").equals("edit")) {
@@ -36,12 +38,18 @@
 			 <% UserBean currentUser = ((UserBean) (session.getAttribute("currentSessionUser")));%> 
         
              <div class="panel-heading" align="center">
-                <h4><b><font color="black" style=""> <a href='TaskController?action=""' style="float:left">Add New Task</a>Welcome <font color="Blue" style=""><%= currentUser.getFirstName() + " " + currentUser.getLastName() %> </font>  To Task Manager </font> 
-                 <a href="logout.jsp" style="float:right" class="btn btn-danger a-btn-slide-text">
-											       <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-											        <span><strong>Logout</strong></span>            
-						</a>
-                </b></h4>
+                <h4><b><font color="black" style="">
+                
+                 
+                 <a href="TaskController?action=""" style="float: left"
+						class="btn btn-primary a-btn-slide-text"> <span
+							class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span><strong>Add Task</strong></span>
+					</a> 
+                 Welcome <font color="Blue" style=""><%= currentUser.getFirstName() + " " + currentUser.getLastName() %> </font>  To Task Manager </font>
+						<a href="logout.jsp" style="float: right"
+						class="btn btn-danger a-btn-slide-text"> <span
+							class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <span><strong>Logout</strong></span>
+					</a> </b></h4>
                       
                 
             </div>
@@ -98,7 +106,7 @@
 	            
 	             <% if (session.getAttribute("currentSessionUser") != null){ %>
 		        
-		           <input type="hidden" name="owner" value="<%= currentUser.getFirstName()+" "+currentUser.getLastName() %>"/>
+		           <input type="hidden" name="owner" value="<%= currentUser.getUserId() %>"/>
 		         <% }else{
 		        	 %>
 		         

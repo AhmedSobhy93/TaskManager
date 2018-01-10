@@ -4,7 +4,7 @@ public class TaskBean {
 
 	private int taskID;
 	private String projectName;
-	private String owner;
+	private int owner;
 	private String title;
 	private String comment;
 	private String dateInserted;
@@ -21,10 +21,10 @@ public class TaskBean {
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-	public String getOwner() {
+	public int getOwner() {
 		return owner;
 	}
-	public void setOwner(String owner) {
+	public void setOwner(int owner) {
 		this.owner = owner;
 	}
 	public String getTitle() {

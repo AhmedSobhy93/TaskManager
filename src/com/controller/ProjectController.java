@@ -62,6 +62,7 @@ public class ProjectController extends HttpServlet{
 		            	
 			        try {
 						response.sendRedirect("/TaskManagerIST/Admin");
+						return;
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -80,6 +81,7 @@ public class ProjectController extends HttpServlet{
 					RequestDispatcher view = request.getRequestDispatcher(forward);
 				      try {
 						view.forward(request, response);
+						return;
 					} catch (ServletException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
