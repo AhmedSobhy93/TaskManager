@@ -33,7 +33,6 @@
     <servlet-name>TaskController</servlet-name>
     <url-pattern>/TaskController</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AdminController</servlet-name>
     <servlet-class>com.controller.AdminController</servlet-class>
@@ -42,8 +41,7 @@
     <servlet-name>AdminController</servlet-name>
     <url-pattern>/Admin</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>ProjectController</servlet-name>
     <servlet-class>com.controller.ProjectController</servlet-class>
   </servlet>
@@ -51,8 +49,7 @@
     <servlet-name>ProjectController</servlet-name>
     <url-pattern>/Project</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>UserController</servlet-name>
     <servlet-class>com.controller.UserController</servlet-class>
   </servlet>
@@ -60,18 +57,13 @@
     <servlet-name>UserController</servlet-name>
     <url-pattern>/User</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-        <servlet-name>Index</servlet-name>
-        <servlet-class>com.controller.IndexController</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Index</servlet-name>
-        <url-pattern>/index</url-pattern>
-    </servlet-mapping> 
-  
-
-    
+    <servlet-name>Index</servlet-name>
+    <servlet-class>com.controller.IndexController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Index</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
 </web-app>

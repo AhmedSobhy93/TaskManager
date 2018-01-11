@@ -246,7 +246,7 @@
 										Administrator to register or login if you've credentials </font> </b>
 							</h2>
 
-							<a href="/TaskManagerIST"
+							<a href="/TaskManager"
 								class="btn btn-primary a-btn-slide-text"> <span
 								class="glyphicon glyphicon-log-in" aria-hidden="true"></span> <span><strong>Login</strong></span>
 							</a>
