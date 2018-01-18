@@ -40,7 +40,7 @@ public class UserController extends HttpServlet {
 			AdminBean admin = ((AdminBean) (request.getSession().getAttribute("admin")));
 			if (admin == null) {
 				try {
-					response.sendRedirect("/TaskManagerIST/Admin");
+					response.sendRedirect("/TaskManager/Admin");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class UserController extends HttpServlet {
 				this.getServletContext().setAttribute("users", users);
 
 				try {
-					response.sendRedirect("/TaskManagerIST/Admin");
+					response.sendRedirect("/TaskManager/Admin");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -77,7 +77,7 @@ public class UserController extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher(forward);
 				try {
 					view.forward(request, response);
-					
+					return;
 				} catch (ServletException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -155,7 +155,7 @@ public class UserController extends HttpServlet {
 			this.getServletContext().setAttribute("users", users);
 
 			try {
-				response.sendRedirect("/TaskManagerIST/Admin");
+				response.sendRedirect("/TaskManager/Admin");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

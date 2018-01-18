@@ -120,7 +120,7 @@
                             <h2><b><font color="white">
                                 Please login Again  </font> </b></h2>
                                 
-	    					<a href="/TaskManagerIST/Admin" class="btn btn-primary a-btn-slide-text">
+	    					<a href="/TaskManager/Admin" class="btn btn-primary a-btn-slide-text">
 									       <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
 									        <span><strong>Login</strong></span>            
 									    </a>

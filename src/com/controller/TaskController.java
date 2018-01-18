@@ -43,7 +43,7 @@ public class TaskController extends HttpServlet {
 			UserBean currentUser = ((UserBean) (request.getSession().getAttribute("currentSessionUser")));
 			if (currentUser == null) {
 				try {
-					response.sendRedirect("/TaskManagerIST/");
+					response.sendRedirect("/TaskManager/");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -54,7 +54,7 @@ public class TaskController extends HttpServlet {
 				dao.deleteTask(taskID);
 
 				try {
-					response.sendRedirect("/TaskManagerIST/TaskController?action=listTask");
+					response.sendRedirect("/TaskManager/TaskController?action=listTask");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -166,7 +166,7 @@ public class TaskController extends HttpServlet {
 		//
 		// view.forward(request, response);
 
-		response.sendRedirect("/TaskManagerIST/TaskController?action=listTask");
+		response.sendRedirect("/TaskManager/TaskController?action=listTask");
 	}
 
 }

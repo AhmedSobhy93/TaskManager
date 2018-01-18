@@ -43,7 +43,7 @@ public class ProjectController extends HttpServlet{
 	        	AdminBean admin = ((AdminBean) (request.getSession().getAttribute("admin")));
 	        	if(admin==null){
 	        		try {
-						response.sendRedirect("/TaskManagerIST/Admin");
+						response.sendRedirect("/TaskManager/Admin");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -61,7 +61,7 @@ public class ProjectController extends HttpServlet{
 				    this.getServletContext().setAttribute("projects", projects);
 		            	
 			        try {
-						response.sendRedirect("/TaskManagerIST/Admin");
+						response.sendRedirect("/TaskManager/Admin");
 						return;
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -158,7 +158,7 @@ public class ProjectController extends HttpServlet{
 				    this.getServletContext().setAttribute("projects", projects);
 		            	
 			        try {
-						response.sendRedirect("/TaskManagerIST/Admin");
+						response.sendRedirect("/TaskManager/Admin");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
