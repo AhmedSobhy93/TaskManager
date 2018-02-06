@@ -57,7 +57,7 @@ public class TaskDAO {
   	            preparedStatement.setInt( 2, task.getOwner() );
   	            preparedStatement.setString( 3, task.getTitle() );
   	            preparedStatement.setString( 4, task.getComment() );
-  	            preparedStatement.setInt(5, task.getTaskID());
+  	            preparedStatement.setString(5, task.getTaskID());
   	            preparedStatement.executeUpdate();
   	            preparedStatement.close();
   	        } catch (SQLException e) {
@@ -75,7 +75,7 @@ public class TaskDAO {
                  + offset + ", " + noOfRecords);
               while( resultSet.next() ) {
                   TaskBean task = new TaskBean();
-                  task.setTaskID( resultSet.getInt( "taskID" ) );
+                  task.setTaskID( resultSet.getString( "taskID" ) );
 //                  System.out.print("Dao >>"+task.getTaskID());
                   task.setProjectName( resultSet.getString( "projectName" ) );
 //                  System.out.print("Dao >>"+task.getProjectName());
@@ -109,7 +109,7 @@ public class TaskDAO {
               preparedStatement.setInt(1, taskID);
 			ResultSet resultSet = preparedStatement.executeQuery();
               while( resultSet.next() ) {
-              	task.setTaskID( resultSet.getInt( "taskID" ) );
+              	task.setTaskID( resultSet.getString( "taskID" ) );
                   task.setProjectName( resultSet.getString( "projectName" ) );
                   task.setOwner( resultSet.getInt( "owner" ) );
                   task.setTitle( resultSet.getString( "title" ) );
@@ -135,7 +135,7 @@ public class TaskDAO {
                  + offset + ", " + noOfRecords );
             while( resultSet.next() ) {
                 TaskBean task = new TaskBean();
-                task.setTaskID( resultSet.getInt( "taskID" ) );
+                task.setTaskID( resultSet.getString( "taskID" ) );
 //                System.out.println(task.getTaskID());
                 task.setProjectName( resultSet.getString( "projectName" ) );
 //                System.out.println(task.getProjectName());
