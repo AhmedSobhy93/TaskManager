@@ -95,6 +95,7 @@
 									<th>Owner</th>
 									<th>Comment</th>
 									<th>Inserted Date</th>
+									<th>Generated Id</th>
 									<th></th>
 									<th></th>
 								</tr>
@@ -103,9 +104,18 @@
 									<tr>
 										<td>${task.projectName}</td>
 										<td>${task.title}</td>
-										<td>${task.owner}</td>
+								<c:forEach items="${users}" var="user">								 	
+								 	<c:choose>
+										<c:when test="${task.owner eq user.userId}">
+											<td>${user.lastName}</td>
+										</c:when>
+										<c:otherwise>
+										</c:otherwise>
+									</c:choose>									
+								 </c:forEach>	
 										<td>${task.comment}</td>
 										<td>${task.dateInserted}</td>
+										<td>${task.generatedTaskId}</td>
 										<c:choose>
 											<c:when
 												test="${ sessionScope.currentSessionUser.userId eq task.owner }">

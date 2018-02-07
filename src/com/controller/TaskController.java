@@ -138,8 +138,7 @@ public class TaskController extends HttpServlet {
 		// int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
 
 		TaskBean task = new TaskBean();
-		String projectName=request.getParameter("projectName");
-		task.setProjectName(projectName);
+		task.setProjectName(request.getParameter("projectName"));
 		task.setOwner(Integer.valueOf(request.getParameter("owner")));
 		task.setTitle(request.getParameter("title"));
 		task.setComment(request.getParameter("comment"));
@@ -152,11 +151,9 @@ public class TaskController extends HttpServlet {
 		System.out.println(action);
 
 		if (!action.equals("edit")) {
-			
 			dao.addTask(task);
 		} else {
-			
-			task.setTaskID(taskID);
+			task.setTaskID(Integer.parseInt(taskID));
 			dao.updateTask(task);
 		}
 		// request.setAttribute("noOfPages", noOfPages);

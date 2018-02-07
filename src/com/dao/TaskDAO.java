@@ -20,15 +20,50 @@ public class TaskDAO {
     	  conn = ConnectionManager.getConnection();
       }
       
+      public static String addZerosInBetween(String projectName,int taskNumber){
+    	  int projectNameSize=projectName.length();
+    	  int totalLength=10;
+    	  String finalTaskId = "";
+    	  Integer finalZerosLength=totalLength-projectNameSize;
+    	  String finalZerosLengthString=finalZerosLength.toString();
+    	  finalTaskId=String.format("%0"+finalZerosLengthString+"d", taskNumber);  	  
+    	  return projectName+finalTaskId;
+      }
+            
+      
       public void addTask(TaskBean task) {
   		try {
               String query = "insert into task (projectName, owner, title, comment) values (?,?,?,?)";
               PreparedStatement preparedStatement = conn.prepareStatement( query );
+              
+             
+              /////////
               preparedStatement.setString( 1, task.getProjectName() );
               preparedStatement.setInt( 2, task.getOwner() );
               preparedStatement.setString( 3, task.getTitle() );
               preparedStatement.setString( 4, task.getComment() );
               preparedStatement.executeUpdate();
+              
+              ///////generated task id
+//              if (i > 0) {
+            	  String updateGeneratedTaskId="update task set generated_task_id=? where taskID=?";
+                  PreparedStatement preparedStatementUpdate = conn.prepareStatement( updateGeneratedTaskId );
+
+	              ResultSet generatedKeys=preparedStatement.getGeneratedKeys();
+	              if (null != generatedKeys && generatedKeys.next()) {
+	          		Long taskId = generatedKeys.getLong(1);
+	          		System.out.println("taskId > "+taskId);
+	          		System.out.println("projectName > "+task.getProjectName());
+	          		task.setGeneratedTaskId(addZerosInBetween(task.getProjectName(),taskId.intValue()));
+	          		
+	          		preparedStatementUpdate.setString(1,task.getGeneratedTaskId());
+	          		preparedStatementUpdate.setString(2,taskId.toString());
+
+	                preparedStatementUpdate.executeUpdate();
+
+	                preparedStatementUpdate.close();
+	          		}
+//              }
               preparedStatement.close();
           } catch (SQLException e) {
               e.printStackTrace();
@@ -57,7 +92,7 @@ public class TaskDAO {
   	            preparedStatement.setInt( 2, task.getOwner() );
   	            preparedStatement.setString( 3, task.getTitle() );
   	            preparedStatement.setString( 4, task.getComment() );
-  	            preparedStatement.setString(5, task.getTaskID());
+  	            preparedStatement.setInt(5, task.getTaskID());
   	            preparedStatement.executeUpdate();
   	            preparedStatement.close();
   	        } catch (SQLException e) {
@@ -75,7 +110,7 @@ public class TaskDAO {
                  + offset + ", " + noOfRecords);
               while( resultSet.next() ) {
                   TaskBean task = new TaskBean();
-                  task.setTaskID( resultSet.getString( "taskID" ) );
+                  task.setTaskID( resultSet.getInt( "taskID" ) );
 //                  System.out.print("Dao >>"+task.getTaskID());
                   task.setProjectName( resultSet.getString( "projectName" ) );
 //                  System.out.print("Dao >>"+task.getProjectName());
@@ -83,6 +118,7 @@ public class TaskDAO {
                   task.setTitle( resultSet.getString( "title" ) );
                   task.setComment( resultSet.getString( "comment" ) );
                   task.setDateInserted(resultSet.getString("DateInserted"));
+                  task.setGeneratedTaskId(resultSet.getString("generated_task_id"));
                   tasks.add(task);
               }
               resultSet.close();
@@ -109,11 +145,13 @@ public class TaskDAO {
               preparedStatement.setInt(1, taskID);
 			ResultSet resultSet = preparedStatement.executeQuery();
               while( resultSet.next() ) {
-              	task.setTaskID( resultSet.getString( "taskID" ) );
+              	task.setTaskID( resultSet.getInt( "taskID" ) );
                   task.setProjectName( resultSet.getString( "projectName" ) );
                   task.setOwner( resultSet.getInt( "owner" ) );
                   task.setTitle( resultSet.getString( "title" ) );
                   task.setComment( resultSet.getString( "comment" ) );
+                  task.setGeneratedTaskId(resultSet.getString("generated_task_id"));
+
                   System.out.println("task.getComment"+task.getComment());
               }
               resultSet.close();
@@ -135,7 +173,7 @@ public class TaskDAO {
                  + offset + ", " + noOfRecords );
             while( resultSet.next() ) {
                 TaskBean task = new TaskBean();
-                task.setTaskID( resultSet.getString( "taskID" ) );
+                task.setTaskID( resultSet.getInt( "taskID" ) );
 //                System.out.println(task.getTaskID());
                 task.setProjectName( resultSet.getString( "projectName" ) );
 //                System.out.println(task.getProjectName());
@@ -143,6 +181,8 @@ public class TaskDAO {
                 task.setTitle( resultSet.getString( "title" ) );
                 task.setComment( resultSet.getString( "comment" ) );
                 task.setDateInserted(resultSet.getString("DateInserted"));
+                task.setGeneratedTaskId(resultSet.getString("generated_task_id"));
+
                 tasks.add(task);
             }
             resultSet.close();

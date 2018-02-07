@@ -2,17 +2,24 @@ package com.beans;
 
 public class TaskBean {
 
-	private String taskID;
+	private int taskID;
 	private String projectName;
 	private int owner;
 	private String title;
 	private String comment;
 	private String dateInserted;
+	private String generatedTaskId;
 	
-	public String getTaskID() {
+	public String getGeneratedTaskId() {
+		return generatedTaskId;
+	}
+	public void setGeneratedTaskId(String generatedtaskId) {
+		this.generatedTaskId = generatedtaskId;
+	}
+	public int getTaskID() {
 		return taskID;
 	}
-	public void setTaskID(String taskID) {
+	public void setTaskID(int taskID) {
 		this.taskID = taskID;
 	}
 	public String getProjectName() {
